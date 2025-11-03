@@ -3,415 +3,171 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Nova — Mindblowing One‑Page Site</title>
-  <meta name="description" content="A beautiful, responsive, single-file website built with HTML/CSS/JS (no frameworks). Includes animations, gallery, contact form, dark mode and more." />
-  <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+  <title>ColorPop — Colorful UI Template</title>
   <style>
-    /* -----------------------------
-       Variables & Reset
-       -----------------------------*/
-    :root{
-      --bg:#0f1226;
-      --card:#0f1724aa;
-      --muted: #9aa3c7;
-      --glass: rgba(255,255,255,0.06);
-      --accent1: #7c5cff;
-      --accent2: #00d4ff;
-      --accent3: #ff6b6b;
-      --radius: 16px;
-      --maxw:1200px;
-    }
-    *{box-sizing:border-box}
+    /* Colorful, modern, easy-to-edit template */
+    *{box-sizing:border-box;margin:0;padding:0}
     html,body{height:100%}
     body{
-      margin:0;
-      font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: radial-gradient(1200px 600px at 10% 10%, rgba(124,92,255,0.12), transparent),
-                  radial-gradient(900px 400px at 90% 90%, rgba(0,212,255,0.06), transparent),
-                  var(--bg);
-      color:#e6eef8;
+      font-family:Inter, system-ui, -apple-system, Arial;
+      background: linear-gradient(135deg,#ffd6e0 0%, #ffd8a8 25%, #d6f6ff 60%, #d9d6ff 100%);
+      color:#0b1320;
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
-      line-height:1.45;
+      padding:28px;
     }
-    .container{max-width:var(--maxw);margin:0 auto;padding:48px 28px}
+    .wrap{max-width:1100px;margin:0 auto}
 
-    /* -----------------------------
-       Navbar
-       -----------------------------*/
-    header{position:fixed;left:0;right:0;top:18px;z-index:40;backdrop-filter: blur(6px);display:flex;justify-content:center}
-    .nav-wrap{width:100%;max-width:var(--maxw);display:flex;align-items:center;gap:16px;padding:8px;border-radius:999px}
-    .brand{display:flex;align-items:center;gap:12px}
-    .logo{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--accent1),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:700;box-shadow:0 8px 30px rgba(20,20,40,0.6)}
-    nav{margin-left:auto;display:flex;gap:14px;align-items:center}
-    a.btn{padding:10px 14px;border-radius:10px;text-decoration:none;color:inherit;font-weight:600;display:inline-block}
-    a.ghost{background:transparent}
-    a.cta{background:linear-gradient(90deg,var(--accent1),var(--accent2));box-shadow:0 6px 20px rgba(124,92,255,0.16);}
+    header{display:flex;align-items:center;gap:18px;padding:12px;border-radius:12px;background:rgba(255,255,255,0.75);backdrop-filter:blur(6px);box-shadow:0 10px 30px rgba(12,18,32,0.08)}
+    .logo{font-weight:900;padding:8px 12px;border-radius:10px;background:linear-gradient(90deg,#ff6b6b,#ffb86b);color:white}
+    nav{margin-left:auto;display:flex;gap:10px}
+    a.navlink{padding:8px 12px;border-radius:8px;text-decoration:none;color:#0b1320;font-weight:600}
+    a.cta{background:linear-gradient(90deg,#6b8bff,#9b6bff);color:white}
 
-    /* -----------------------------
-       Hero
-       -----------------------------*/
-    .hero{min-height:78vh;display:grid;grid-template-columns:1fr 420px;gap:32px;align-items:center;padding-top:28px}
-    .hero-left h1{font-size:clamp(34px,6vw,56px);margin:0 0 18px;letter-spacing:-0.02em}
-    .kicker{display:inline-block;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg,rgba(124,92,255,0.12),rgba(0,212,255,0.06));color:var(--muted);font-weight:700;margin-bottom:8px}
-    .hero p{color:var(--muted);margin:0 0 22px}
-    .hero-actions{display:flex;gap:12px}
-    .grid-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:18px}
-    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:16px;border-radius:12px;box-shadow:0 6px 30px rgba(3,7,18,0.6);backdrop-filter:blur(4px)}
+    .hero{display:flex;gap:20px;align-items:center;margin-top:22px}
+    .hero-left{flex:1}
+    h1{font-size:34px;line-height:1.02;margin-bottom:8px}
+    p.lead{color:#102133c9;margin-bottom:12px}
+    .actions{display:flex;gap:10px}
+    .btn{padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:700}
+    .btn.primary{background:linear-gradient(90deg,#7be4ff,#7b6bff);color:#041028}
+    .btn.ghost{background:transparent;border:2px dashed rgba(4,16,40,0.06)}
 
-    /* -----------------------------
-       3D mock / canvas
-       -----------------------------*/
-    .mock{height:360px;border-radius:18px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));position:relative;overflow:hidden;box-shadow: 0 30px 80px rgba(2,6,20,0.8)}
-    .mock .screen{position:absolute;inset:28px;border-radius:12px;background:linear-gradient(180deg, rgba(8,14,30,0.86), rgba(2,6,20,0.4));display:flex;flex-direction:column;padding:18px;transform-origin:center;transition:transform 0.12s linear}
-    .mock .dots{position:absolute;left:18px;top:18px;display:flex;gap:8px}
-    .dot{width:9px;height:9px;border-radius:50%}
+    .visual{width:360px;border-radius:14px;padding:14px;background:linear-gradient(180deg,rgba(255,255,255,0.9),rgba(255,255,255,0.7));box-shadow:0 20px 50px rgba(10,18,40,0.08)}
+    .card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+    .card{padding:14px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.9),rgba(255,255,255,0.82));box-shadow:0 8px 18px rgba(10,18,40,0.06);text-align:center}
+    .card h3{margin-bottom:8px}
+    .muted{color:#334155cc;font-size:14px}
 
-    /* -----------------------------
-       Features
-       -----------------------------*/
-    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:48px 0}
-    .feature{padding:22px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));}
-    .feature h3{margin:0 0 8px}
-    .muted{color:var(--muted);font-size:14px}
+    /* Gallery */
+    .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:20px}
+    .tile{border-radius:10px;overflow:hidden;position:relative;cursor:pointer}
+    .tile img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+    .tile:hover img{transform:scale(1.06)}
+    .tile .tag{position:absolute;left:8px;bottom:8px;padding:6px 8px;border-radius:8px;background:rgba(0,0,0,0.45);color:white;font-weight:700}
 
-    /* -----------------------------
-       Gallery
-       -----------------------------*/
-    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .proj{position:relative;border-radius:12px;overflow:hidden;padding:0;min-height:160px;cursor:pointer;transform-style:preserve-3d}
-    .proj img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.06);transition:transform .6s cubic-bezier(.2,.9,.3,1)}
-    .proj:hover img{transform:scale(1.12)}
-    .proj .label{position:absolute;left:14px;bottom:14px;background:rgba(0,0,0,0.45);padding:8px 10px;border-radius:10px;font-weight:700}
+    /* Contact */
+    .contact{display:flex;gap:18px;margin-top:22px}
+    .contact form{flex:1;background:rgba(255,255,255,0.85);padding:12px;border-radius:12px}
+    input,textarea{width:100%;padding:10px;margin-top:8px;border-radius:8px;border:1px solid rgba(4,16,40,0.06)}
+    button.send{margin-top:8px;padding:10px 14px;border-radius:8px;background:linear-gradient(90deg,#ff9bb3,#8bb6ff);border:0;color:white;font-weight:700}
 
-    /* -----------------------------
-       Footer / contact
-       -----------------------------*/
-    footer{margin-top:44px;padding:28px;border-radius:14px;background:linear-gradient(180deg, rgba(0,0,0,0.06), rgba(255,255,255,0.01));display:flex;justify-content:space-between;align-items:center}
-    .socials{display:flex;gap:10px}
-    .chip{padding:8px 10px;border-radius:999px;background:rgba(255,255,255,0.03);font-weight:600}
+    footer{margin-top:26px;text-align:center;color:#223140cc}
 
-    /* -----------------------------
-       Utilities & responsive
-       -----------------------------*/
-    @media (max-width:980px){
-      .hero{grid-template-columns:1fr;}
-      .hero-right{order:-1}
-      .features{grid-template-columns:repeat(2,1fr)}
+    @media(max-width:900px){
+      .hero{flex-direction:column}
+      .visual{width:100%}
       .gallery{grid-template-columns:repeat(2,1fr)}
-    }
-    @media (max-width:640px){
-      .container{padding:24px}
-      .features{grid-template-columns:1fr}
-      .gallery{grid-template-columns:1fr}
-      header{top:12px}
+      .card-grid{grid-template-columns:repeat(2,1fr)}
+      .contact{flex-direction:column}
     }
 
-    /* -----------------------------
-       Micro-animations
-       -----------------------------*/
-    @keyframes floaty{0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)}}
-    .float{animation:floaty 6s ease-in-out infinite}
-
-    /* -----------------------------
-       Dark mode toggle (simple)
-       -----------------------------*/
-    .toggle{display:inline-flex;align-items:center;gap:8px;padding:6px;border-radius:999px;background:rgba(255,255,255,0.03)}
-    .switch{width:46px;height:26px;border-radius:999px;background:linear-gradient(90deg,#222, #111);position:relative;padding:3px;cursor:pointer}
-    .knob{width:20px;height:20px;border-radius:50%;background:white;position:absolute;left:3px;top:3px;transition:left .2s}
-    .switch.on{background:linear-gradient(90deg,var(--accent1),var(--accent2))}
-    .switch.on .knob{left:23px;background:linear-gradient(90deg,#fff,#fff)}
-
-    /* small helpers */
-    .small{font-size:13px;color:var(--muted)}
-    .lead{font-size:16px}
-
-    /* scroll reveal initial */
-    [data-reveal]{opacity:0;transform:translateY(18px);transition:opacity .7s ease, transform .7s cubic-bezier(.2,.9,.3,1)}
-    [data-reveal].revealed{opacity:1;transform:none}
-
+    /* tiny animation */
+    .floaty{animation:float 6s ease-in-out infinite}
+    @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)}}
   </style>
 </head>
 <body>
-  <header>
-    <div class="nav-wrap container">
-      <div class="brand">
-        <div class="logo">N</div>
-        <div>
-          <div style="font-weight:800">Nova</div>
-          <div class="small" style="margin-top:2px">Creative single-page</div>
-        </div>
-      </div>
+  <div class="wrap">
+    <header>
+      <div class="logo">ColorPop</div>
       <nav>
-        <a class="btn ghost" href="#features">Features</a>
-        <a class="btn ghost" href="#work">Work</a>
-        <a class="btn ghost" href="#contact">Contact</a>
-        <a class="btn cta" href="#get-started">Get Started</a>
+        <a class="navlink" href="#features">Features</a>
+        <a class="navlink" href="#work">Work</a>
+        <a class="navlink cta" href="#contact">Contact</a>
       </nav>
-    </div>
-  </header>
+    </header>
 
-  <main class="container">
     <section class="hero">
-      <div class="hero-left" data-reveal>
-        <div class="kicker">Design • Code • Wow</div>
-        <h1>Beautifully crafted UI that feels alive.</h1>
-        <p class="lead">A single-file demo combining modern UI patterns — glassmorphism, subtle motion, responsive layout and interactive micro-interactions. Perfect as a template or inspiration for your next project.</p>
-
-        <div class="hero-actions">
-          <a class="btn cta" href="#work">Explore Work</a>
-          <a class="btn ghost" href="#about">How it works</a>
+      <div class="hero-left">
+        <h1>Bright, colorful and easy to customize</h1>
+        <p class="lead">A cheerful starter template using only HTML, CSS and a little JavaScript. Great for portfolios, small business pages, or learning UI design.</p>
+        <div class="actions">
+          <a class="btn primary" href="#work">See Work</a>
+          <a class="btn ghost" href="#learn">How it works</a>
         </div>
 
-        <div class="grid-cards" style="margin-top:22px">
-          <div class="card small">
-            <div style="font-weight:800">Fast & Lightweight</div>
-            <div class="muted">Pure HTML/CSS/JS — no libraries, optimised for performance.</div>
+        <div class="card-grid">
+          <div class="card">
+            <h3>Fast</h3>
+            <div class="muted">Lightweight, no libraries</div>
           </div>
-          <div class="card small">
-            <div style="font-weight:800">Responsive</div>
-            <div class="muted">Looks great on phones, tablets, and desktops.</div>
+          <div class="card">
+            <h3>Colorful</h3>
+            <div class="muted">Gradient-first design</div>
+          </div>
+          <div class="card">
+            <h3>Accessible</h3>
+            <div class="muted">Readable and responsive</div>
           </div>
         </div>
       </div>
 
-      <div class="hero-right" data-reveal>
-        <div class="mock" id="mock">
-          <div class="dots">
-            <div class="dot" style="background:#ff7b7b"></div>
-            <div class="dot" style="background:#ffdb6b"></div>
-            <div class="dot" style="background:#7bf2a6"></div>
+      <div class="visual floaty">
+        <img src="https://images.unsplash.com/photo-1503264116251-35a269479413?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="visual" style="width:100%;border-radius:8px;display:block;margin-bottom:10px">
+        <div style="display:flex;gap:8px">
+          <div style="flex:1">
+            <div style="font-weight:800">Mini Preview</div>
+            <div class="muted">Replace images with your screenshots.</div>
           </div>
-          <div class="screen" id="screen">
-            <div style="display:flex;align-items:center;gap:12px">
-              <div style="width:10px;height:10px;border-radius:50%;background:var(--accent2)"></div>
-              <strong>Nova UI</strong>
-            </div>
-
-            <div style="flex:1;display:flex;flex-direction:column;justify-content:center">
-              <div style="font-size:13px;color:var(--muted)">Live preview</div>
-              <div style="margin-top:8px;background:linear-gradient(90deg,var(--accent1),var(--accent2));height:12px;border-radius:999px;width:72%"></div>
-            </div>
-
-            <div style="display:flex;gap:8px;justify-content:flex-end;align-items:center">
-              <div class="chip">Dark</div>
-              <div class="chip">Fast</div>
-            </div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="background:linear-gradient(90deg,#ffd6e0,#ffd8a8);padding:6px 8px;border-radius:8px;font-weight:800">New</div>
+            <div style="background:linear-gradient(90deg,#d6f6ff,#d9d6ff);padding:6px 8px;border-radius:8px;font-weight:800">Fresh</div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="features" class="features" style="margin-top:36px">
-      <div class="feature" data-reveal>
-        <h3>Interactive Motion</h3>
-        <div class="muted">Mouse-parallax mock, tilt effects and scroll reveals to make the interface feel alive.</div>
-      </div>
-      <div class="feature" data-reveal>
-        <h3>Gallery & Filters</h3>
-        <div class="muted">Project gallery with smooth hover and label overlays — perfect to showcase work.</div>
-      </div>
-      <div class="feature" data-reveal>
-        <h3>Dark Mode Ready</h3>
-        <div class="muted">Subtle palette choices and a toggle you can wire into persistent storage easily.</div>
+    <section id="work">
+      <h2 style="margin-top:22px">Work & Gallery</h2>
+      <p class="muted">Click any tile to preview — demo only.</p>
+      <div class="gallery">
+        <div class="tile" data-title="Project A"><img src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="a"><div class="tag">Project A</div></div>
+        <div class="tile" data-title="Project B"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="b"><div class="tag">Project B</div></div>
+        <div class="tile" data-title="Project C"><img src="https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="c"><div class="tag">Project C</div></div>
+        <div class="tile" data-title="Project D"><img src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="d"><div class="tag">Project D</div></div>
       </div>
     </section>
 
-    <section id="work" style="margin-top:20px">
-      <h2 data-reveal>Selected Work</h2>
-      <p class="muted" data-reveal>Click an item to open a quick preview.</p>
+    <section id="contact" class="contact">
+      <form id="contactForm">
+        <h3>Contact us</h3>
+        <input name="name" placeholder="Your name" required />
+        <input name="email" placeholder="Email" type="email" required />
+        <textarea name="message" rows="4" placeholder="Tell us about your project"></textarea>
+        <button class="send" type="submit">Send message</button>
+        <div id="status" style="margin-top:8px;color:green;display:none">Sent (demo)</div>
+      </form>
 
-      <div class="gallery" style="margin-top:18px">
-        <div class="proj" tabindex="0" data-title="Aurora App" data-reveal>
-          <img src="https://images.unsplash.com/photo-1526378721016-9f3f8b9b8c6b?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="project 1">
-          <div class="label">Aurora App</div>
-        </div>
-        <div class="proj" tabindex="0" data-title="Horizon Dashboard" data-reveal>
-          <img src="https://images.unsplash.com/photo-1501426026826-31c667bdf23d?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="project 2">
-          <div class="label">Horizon Dashboard</div>
-        </div>
-        <div class="proj" tabindex="0" data-title="Pulse Analytics" data-reveal>
-          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="project 3">
-          <div class="label">Pulse Analytics</div>
-        </div>
-      </div>
-    </section>
-
-    <section id="about" style="margin-top:36px;display:flex;gap:18px;align-items:center;flex-wrap:wrap">
-      <div style="flex:1;min-width:260px" data-reveal>
-        <h2>About this template</h2>
-        <p class="muted">This single-file template is a starting point. Use the modular CSS variables to change colors, add sections, or plug in your backend. Everything is commented and intentionally simple.</p>
-      </div>
-      <div style="width:320px" data-reveal>
-        <div style="padding:18px;border-radius:12px;background:var(--glass);"> 
-          <div style="font-weight:800">Why choose it?</div>
-          <div class="small muted">Fast to customise • Easy to read • Aesthetic motion</div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" style="margin-top:40px">
-      <h2 data-reveal>Get in touch</h2>
-      <div style="display:flex;gap:18px;flex-wrap:wrap;margin-top:12px">
-        <form id="contactForm" style="flex:1;min-width:280px;padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01))" data-reveal>
-          <label class="small">Name</label>
-          <input name="name" required style="width:100%;padding:10px;margin-top:6px;border-radius:8px;border:0;background:rgba(255,255,255,0.03);color:inherit" />
-          <label class="small" style="margin-top:10px">Email</label>
-          <input name="email" type="email" required style="width:100%;padding:10px;margin-top:6px;border-radius:8px;border:0;background:rgba(255,255,255,0.03);color:inherit" />
-          <label class="small" style="margin-top:10px">Message</label>
-          <textarea name="message" rows="5" required style="width:100%;padding:10px;margin-top:6px;border-radius:8px;border:0;background:rgba(255,255,255,0.03);color:inherit"></textarea>
-          <div style="display:flex;gap:10px;margin-top:12px;align-items:center">
-            <button type="submit" class="btn cta">Send</button>
-            <div id="formStatus" class="small muted"></div>
-          </div>
-        </form>
-
-        <aside style="width:320px;min-width:240px" data-reveal>
-          <div style="padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01))">
-            <div style="font-weight:800">Contact</div>
-            <div class="muted small" style="margin-top:8px">hello@novastudio.example</div>
-            <div style="margin-top:12px" class="small muted">Or use the form — this demo will show a simulated send.</div>
-          </div>
-        </aside>
-      </div>
+      <aside style="width:280px;padding:12px;border-radius:12px;background:rgba(255,255,255,0.85);">
+        <h3>Quick info</h3>
+        <p class="muted">Make this your own — change gradients, images and text. This file is tiny and easy to edit.</p>
+      </aside>
     </section>
 
     <footer>
-      <div class="small">© <span id="year"></span> Nova — Built with ❤️ by you</div>
-      <div class="socials">
-        <div class="chip">Dribbble</div>
-        <div class="chip">Github</div>
-        <div class="chip">Twitter</div>
-      </div>
+      <p>© ColorPop • Built with HTML, CSS & JavaScript</p>
     </footer>
-  </main>
-
-  <!-- Modal preview (lightweight) -->
-  <div id="modal" style="position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:80;background:linear-gradient(0deg, rgba(0,0,0,0.55), rgba(0,0,0,0.55));">
-    <div style="width:min(920px,92%);max-height:86vh;overflow:auto;border-radius:12px;background:linear-gradient(180deg,#081224,#021025);padding:18px;position:relative">
-      <button id="closeModal" style="position:absolute;right:12px;top:12px;padding:8px;border-radius:8px">✕</button>
-      <div id="modalTitle" style="font-weight:800;margin-bottom:8px"></div>
-      <img id="modalImg" style="width:100%;border-radius:10px;display:block" />
-      <p class="muted" style="margin-top:10px">This is a demo preview. Replace images with real screenshots for your portfolio.</p>
-    </div>
   </div>
 
   <script>
-    // -----------------------------
-    // Utilities
-    // -----------------------------
-    const $ = (s) => document.querySelector(s);
-    const $$ = (s) => document.querySelectorAll(s);
-
-    // set year
-    document.getElementById('year').innerText = new Date().getFullYear();
-
-    // Scroll reveal
-    const observer = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting) e.target.classList.add('revealed');
-      });
-    },{threshold:.12});
-    document.querySelectorAll('[data-reveal]').forEach(el=>observer.observe(el));
-
-    // Mock tilt / parallax
-    const screen = $('#screen');
-    const mock = $('#mock');
-    mock.addEventListener('mousemove', (ev)=>{
-      const r = mock.getBoundingClientRect();
-      const cx = r.left + r.width/2;
-      const cy = r.top + r.height/2;
-      const dx = (ev.clientX - cx) / r.width;
-      const dy = (ev.clientY - cy) / r.height;
-      const rx = -dy * 8; const ry = dx * 10;
-      screen.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) translateZ(6px)`;
+    // lightweight interactions
+    document.querySelectorAll('.tile').forEach(t=>{
+      t.addEventListener('click', ()=>{
+        const title = t.dataset.title || 'Preview';
+        alert(title + ' — preview (demo)');
+      })
     });
-    mock.addEventListener('mouseleave', ()=>{screen.style.transform='none'})
 
-    // Gallery modal
-    $$('.proj').forEach(p=>{
-      p.addEventListener('click', ()=>openPreview(p));
-      p.addEventListener('keyup', (e)=>{ if(e.key === 'Enter') openPreview(p)});
-    });
-    function openPreview(p){
-      const img = p.querySelector('img').src;
-      const title = p.dataset.title || 'Project Preview';
-      $('#modalImg').src = img;
-      $('#modalTitle').innerText = title;
-      $('#modal').style.display = 'flex';
-    }
-    $('#closeModal').addEventListener('click', ()=>$('#modal').style.display='none');
-    $('#modal').addEventListener('click', (ev)=>{ if(ev.target === $('#modal')) $('#modal').style.display='none' });
-
-    // Contact demo submit
-    $('#contactForm').addEventListener('submit', (e)=>{
+    const form = document.getElementById('contactForm');
+    form && form.addEventListener('submit', (e)=>{
       e.preventDefault();
-      const status = $('#formStatus');
-      status.innerText = 'Sending...';
-      setTimeout(()=>{
-        status.innerText = 'Message sent — thanks! (demo)';
-        e.target.reset();
-      }, 900);
+      document.getElementById('status').style.display = 'block';
+      setTimeout(()=>{document.getElementById('status').style.display='none'; form.reset()},1200);
     });
 
-    // Dark-mode-ish toggle example
-    const toggleEl = document.createElement('div');
-    toggleEl.className = 'toggle';
-    toggleEl.innerHTML = `<div class="small">Theme</div><div id="switch" class="switch" role="button" tabindex="0"><div class="knob"></div></div>`;
-    document.querySelector('.nav-wrap').appendChild(toggleEl);
-    const switchEl = $('#switch');
-    let isOn = false;
-    const applyTheme = ()=>{
-      if(isOn){
-        document.documentElement.style.setProperty('--bg','#f8fafc');
-        document.documentElement.style.setProperty('--muted','#42506b');
-        document.documentElement.style.setProperty('--accent1','#6b46ff');
-        document.documentElement.style.setProperty('--accent2','#06b6d4');
-        document.body.style.color = '#081224';
-        switchEl.classList.add('on');
-      } else {
-        document.documentElement.style.setProperty('--bg','#0f1226');
-        document.documentElement.style.setProperty('--muted','#9aa3c7');
-        document.body.style.color = '#e6eef8';
-        switchEl.classList.remove('on');
-      }
-    }
-    switchEl.addEventListener('click', ()=>{ isOn = !isOn; applyTheme(); });
-    switchEl.addEventListener('keyup', (e)=>{ if(e.key==='Enter'){ isOn = !isOn; applyTheme(); }});
-
-    // Fancy little entrance animation for the logo
-    document.querySelector('.logo').animate([
-      { transform: 'scale(0.6) rotate(-10deg) translateY(-8px)', opacity:0 },
-      { transform: 'scale(1) rotate(0deg) translateY(0)', opacity:1 }
-    ],{duration:700, easing:'cubic-bezier(.2,.9,.3,1)'});
-
-    // Keyboard shortcut: press / to focus search (small nifty addition)
-    window.addEventListener('keydown', (e)=>{
-      if(e.key === '/'){
-        e.preventDefault();
-        window.scrollTo({top:0, behavior:'smooth'});
-        const firstInput = document.querySelector('input[name=name]');
-        if(firstInput) firstInput.focus();
-      }
-    });
-
-    // Small accessibility improvement: ensure clickable projects have focus outline
-    $$('.proj').forEach(p=>p.addEventListener('focus', ()=>p.style.outline='2px solid rgba(124,92,255,0.2)'));
-
-    // Optional: lightweight progressive image loading (very tiny)
-    document.querySelectorAll('img').forEach(img=>{
-      if(img.complete) return;
-      img.style.filter='blur(6px)';
-      img.addEventListener('load', ()=>{ img.style.filter='none'; img.style.transition='filter .6s'; });
-    });
-
-    // Final flourish: subtle background movement based on mouse
-    document.addEventListener('mousemove', (ev)=>{
-      const x = (ev.clientX / window.innerWidth) * 2 - 1;
-      const y = (ev.clientY / window.innerHeight) * 2 - 1;
-      document.body.style.backgroundPosition = `${50 - x*2}% ${50 - y*2}%`;
-    });
-
+    // small keyboard shortcut: press g to jump to gallery
+    window.addEventListener('keydown', e=>{ if(e.key.toLowerCase()==='g'){ document.getElementById('work').scrollIntoView({behavior:'smooth'}); } });
   </script>
 </body>
 </html>
